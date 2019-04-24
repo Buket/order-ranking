@@ -1,7 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>OrderSorting</RootNamespace>
+    <AssemblyName>OrderSorting</AssemblyName>
+    <Authors>Buket</Authors>
+    <RepositoryUrl>https://github.com/Buket/order-ranking</RepositoryUrl>
+    <Company />
+    <Copyright>GPL v3</Copyright>
+    <PackageLicenseUrl>https://ru.wikipedia.org/wiki/GNU_General_Public_License#GPL_v3</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Buket/order-ranking</PackageProjectUrl>
+    <RepositoryType>public</RepositoryType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
 </Project>

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace OrderSorting
 {
@@ -10,18 +8,18 @@ namespace OrderSorting
         private Dictionary<string, BiDirectionalOrder> dict = new Dictionary<string, BiDirectionalOrder>();
 
         /// <summary>
-        /// таблица принятия решений
-        /// при поиске src и dst в dict
-        /// 0 - элемент с указанным key не найден
-        /// 1 - элемент с указанным key найден
+        /// decision accept table
+        /// when seek src and dst at dict
+        /// 0 - dict item with given key was not found
+        /// 1 - dict item with given key was not found
         /// 
-        /// обновляем свзяи => dict[src].next = dict[dst] и dict[dst].prev = dict[src]
+        /// update refs => dict[src].next = dict[dst] и dict[dst].prev = dict[src]
         /// 
         /// src  dst
-        ///  0    0   добавляем оба адреса в dict и обновляем свзяи
-        ///  0    1   добавляем адрес src в dict и обновляем свзяи
-        ///  1    0   добавляем адрес dst в dict и обновляем свзяи
-        ///  1    1   обновляем свзяи
+        ///  0    0   add both address in dict and update refs
+        ///  0    1   add src address in dict and update refs
+        ///  1    0   add dst address in dict and update refs
+        ///  1    1   don`t add address, just update refs
         /// </summary>      
         private bool[] decision = new bool[2];
 
@@ -33,7 +31,7 @@ namespace OrderSorting
         }
 
         /// <summary>
-        /// упордочивает заказы для последовательного маршрута
+        /// reorder orders for sequential route
         /// </summary>
         /// <param name="orders"></param>
         /// <returns></returns>

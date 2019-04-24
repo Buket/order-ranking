@@ -1,8 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using OrderSorting;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 
 namespace OrderSortingBenchmark
 {
@@ -17,10 +15,10 @@ namespace OrderSortingBenchmark
         public OrderToolBenchmark()
         {
             testsOrders = new List<List<(string SourceAddress, string DestAddress)>>();
-            //10 доставщиков
+            //10 delivers
             for (int i = 0; i < 10; i++)
             {
-                //100 адресов доставки
+                //100 address
                 var @case = new List<(string SourceAddress, string DestAddress)>();
                 for (int j = 0; j < 12; j++)
                 {

@@ -9,7 +9,7 @@ namespace OrderSorting
         private static Random rng = new Random();
 
         /// <summary>
-        /// Перемешивает элементы в списке
+        /// shuffle element in list
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
