@@ -8,35 +8,33 @@ namespace OrderSortingBenchmark
     //[RPlotExporter, RankColumn]
     public class OrderToolBenchmark
     {
-        private OrderRankingTool indexer = new OrderRankingTool();
-        private List<List<(string SourceAddress, string DestAddress)>> testsOrders;
+        private List<(string SourceAddress, string DestAddress)> tupleOrders;
+        private List<string[]> stringArrayOrders;
 
-        
         public OrderToolBenchmark()
         {
-            testsOrders = new List<List<(string SourceAddress, string DestAddress)>>();
-            //10 delivers
-            for (int i = 0; i < 10; i++)
+            tupleOrders = new List<(string SourceAddress, string DestAddress)>();
+            for (int j = 0; j < 22; j++)
             {
-                //100 address
-                var @case = new List<(string SourceAddress, string DestAddress)>();
-                for (int j = 0; j < 12; j++)
-                {
-                    var order = (SourceAddress:$"адрес № {j}", DestAddress:$"адрес № {j+1}");
-                    @case.Add(order);
-                }
-                @case.Shuffle();
-                testsOrders.Add(@case);
+                var order = (SourceAddress: $"адрес № {j}", DestAddress: $"адрес № {j + 1}");
+                tupleOrders.Add(order);
             }
+            tupleOrders.Shuffle();
+
+
+            stringArrayOrders = new List<string[]>();
+            for (int j = 0; j < 22; j++)
+            {
+                var order = new[] { $"адрес № {j}", $"адрес № {j + 1}" };
+                stringArrayOrders.Add(order);
+            }
+            stringArrayOrders.Shuffle();
         }
 
-        [ParamsSource(nameof(ValuesForInput))]
-        public List<(string SourceAddress, string DestAddress)> Input { get; set; }
-
-        // public property
-        public IEnumerable<List<(string SourceAddress, string DestAddress)>> ValuesForInput => testsOrders;
+        [Benchmark]
+        public void BenchmarkWithTupleData() => OrderRankingTool.Reorder(tupleOrders);
 
         [Benchmark]
-        public void Benchmark1() => indexer.Reorder(Input);
+        public void BenchmarkWithStringArrayData() => OrderRankingTool.Reorder(stringArrayOrders);
     }
 }

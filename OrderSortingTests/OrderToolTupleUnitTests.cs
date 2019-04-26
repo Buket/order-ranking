@@ -7,53 +7,53 @@ using System.Linq;
 namespace OrderSortingTests
 {
     [TestFixture]
-    public class OrderToolUnitTests
+    public partial class OrderToolTupleUnitTests
     {
-        private List<(string SourceAddress, string DestAddress)> orders;
-
-        [SetUp]
-        public void Init()
+        [Test]
+        public void CountNotChangedTest()
         {
-            orders = new List<(string SourceAddress, string DestAddress)>
+            var orders = new List<(string SourceAddress, string DestAddress)>
             {
                 ("Южный", "Печатники"),
                 ("Текстильщики", "Нижегородний"),
                 ("Печатники", "Текстильщики")
             };
-        }
-
-        [Test]
-        public void CountNotChangedTest()
-        {
-            var indexer = new OrderRankingTool();
-            var rankedOrders = indexer.Reorder(orders);
+            var rankedOrders = OrderRankingTool.Reorder(orders);
             Assert.AreEqual(orders.Count, rankedOrders.Count);
         }
 
         [Test]
         public void CorrectlyReorderedFirstAddressTest()
         {
-            var indexer = new OrderRankingTool();
-            var rankedOrders = indexer.Reorder(orders);
+            var orders = new List<(string SourceAddress, string DestAddress)>
+            {
+                ("Южный", "Печатники"),
+                ("Текстильщики", "Нижегородний"),
+                ("Печатники", "Текстильщики")
+            };
+            var rankedOrders = OrderRankingTool.Reorder(orders);
             Assert.True(rankedOrders.First().SourceAddress.Equals("Южный"));
         }
 
         [Test]
         public void CorrectlyReorderedLastAddressTest()
         {
-            var indexer = new OrderRankingTool();
-            var rankedOrders = indexer.Reorder(orders);
+            var orders = new List<(string SourceAddress, string DestAddress)>
+            {
+                ("Южный", "Печатники"),
+                ("Текстильщики", "Нижегородний"),
+                ("Печатники", "Текстильщики")
+            };
+            var rankedOrders = OrderRankingTool.Reorder(orders);
             Assert.True(rankedOrders.Last().DestAddress.Equals("Нижегородний"));
         }
 
 
         [TestCase(10)]
         [TestCase(1000)]
-        [TestCase(100000)]
+        [TestCase(10000)]
         public void CanReorderManyOrdersCaseTest(int count)
         {
-            var indexer = new OrderRankingTool();
-
             var @case = new List<(string SourceAddress, string DestAddress)>();
             
             for (int j = 0; j < count; j++)
@@ -63,7 +63,7 @@ namespace OrderSortingTests
             }
             @case.Shuffle();
 
-            var rankedOrders = indexer.Reorder(@case);
+            var rankedOrders = OrderRankingTool.Reorder(@case);
             Assert.True(rankedOrders.First().SourceAddress.Equals("адрес № 0"));
             Assert.True(rankedOrders.Last().DestAddress.Equals($"адрес № {count}"));
         }

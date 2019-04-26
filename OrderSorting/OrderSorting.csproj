@@ -13,6 +13,7 @@
     <RepositoryType>public</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Description>https://github.com/Buket/order-ranking</Description>
   </PropertyGroup>
 
 </Project>
