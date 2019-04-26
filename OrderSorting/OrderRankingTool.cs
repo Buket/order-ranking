@@ -141,7 +141,7 @@ namespace OrderSorting
             }
 
 
-            //total O(3n)
+            //total O(3n) ~ O(n)
             return rankedOrders;
         }
     }

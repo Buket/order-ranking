@@ -2,4 +2,6 @@ OrderRankingTool.Reorder позволяет упорядочить адреса 
 
 OrderSortingBenchmark запуск только в Release конфигурации
 
+Сomputational complexity ~O(n)
+
 NuGet Package https://www.nuget.org/packages/OrderSorting/
